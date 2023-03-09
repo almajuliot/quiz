@@ -1,0 +1,146 @@
+.App {
+	max-width: 900px;
+	padding: 0 10px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin: 0;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 0;
+}
+
+.header--list {
+	display: flex;
+	gap: 30px;
+}
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero--img {
+	border-radius: 50%;
+	width: 200px;
+	aspect-ratio: 1/1;
+	background-image: url("https://t4.ftcdn.net/jpg/03/32/68/71/360_F_332687153_gmsohq86koOEWFYlYSI3N6xzb1zIcG88.jpg");
+	background-size: 200px auto;
+}
+
+.mode--list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.mode--each {
+	display: flex;
+	align-items: center;
+	text-align: left;
+	gap: 10px;
+	border: 1px solid #e5e5e5;
+	padding: 15px 15px 10px 0;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.selectmode {
+	width: 100px;
+	border-radius: 10px;
+}
+
+.mode--begin {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	margin-top: 20px;
+}
+
+.mode--beginbtn {
+	background-color: #1e87f0;
+	color: #fff;
+	border: 1px solid transparent;
+	font-weight: 400;
+	font-size: 20px;
+	padding: 5px 15px;
+}
+
+.mode--leaderboard {
+	background-color: transparent;
+	color: #333;
+	font-weight: 400;
+	border: 1px solid #e5e5e5;
+	font-size: 20px;
+	padding: 5px 15px;
+}
+
+.rules {
+	text-align: left;
+	cursor: pointer;
+	margin-top: 20px;
+}
+
+.rules--title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.rules--title > h1 {
+	font-weight: 400;
+	font-size: 25px;
+}

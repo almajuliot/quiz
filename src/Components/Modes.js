@@ -38,7 +38,7 @@ export default function Modes() {
 			</div> */}
 
 			<div className="mode--begin">
-				<Link to={`/quiz`}>
+				<Link to={`/quizes`}>
 					<h1 className="mode--beginbtn">Begin Quiz</h1>
 				</Link>
 				<Link to={`/leaderboard`}>

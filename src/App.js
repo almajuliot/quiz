@@ -10,7 +10,7 @@ import Stats from "./Pages/Stats";
 function App() {
 	return (
 		<div className="App">
-			<Header />
+			{/* <Header /> */}
 			<HashRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />

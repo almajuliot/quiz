@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Modes() {
 	const [mode, setMode] = useState("ranked");
@@ -10,7 +11,7 @@ export default function Modes() {
 	return (
 		<div className="mode">
 			<p>Singleplayer modes:</p>
-			<div className="mode--list">
+			{/* <div className="mode--list">
 				<EachMode
 					title="Ranked progressive"
 					text="Easy at first, the game will gradually become much more challenging.
@@ -34,11 +35,15 @@ export default function Modes() {
 					mode={mode}
 					onChange={onChange}
 				/>
-			</div>
+			</div> */}
 
 			<div className="mode--begin">
-				<h1 className="mode--beginbtn">Begin Quiz</h1>
-				<h1 className="mode--leaderboard">Leaderboard</h1>
+				<Link to={`/quiz`}>
+					<h1 className="mode--beginbtn">Begin Quiz</h1>
+				</Link>
+				<Link to={`/leaderboard`}>
+					<h1 className="mode--leaderboard">Leaderboard</h1>
+				</Link>
 			</div>
 		</div>
 	);

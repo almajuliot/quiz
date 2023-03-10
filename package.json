@@ -1,7 +1,7 @@
 {
 	"name": "quiz",
 	"version": "0.1.0",
-	"homepage": "https://almajuliot.github.io/quiz",
+	"homepage": "https://almajuliot.github.io/quiz/",
 	"private": true,
 	"dependencies": {
 		"cra-template": "1.2.0",

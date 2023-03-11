@@ -16,7 +16,9 @@ export default function Rules(props) {
 				<h1>{props.title}</h1>
 				<h1>+</h1>
 			</div>
-			<p style={styles}>{props.text}</p>
+			<p className="rules--text" style={styles}>
+				{props.text}
+			</p>
 		</div>
 	);
 }

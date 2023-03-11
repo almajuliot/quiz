@@ -6,6 +6,7 @@
 	margin-right: auto;
 	text-align: center;
 	transition: all 0.8s;
+	font-family: "Montserrat", sans-serif;
 }
 
 .App-logo {
@@ -20,9 +21,6 @@
 }
 
 .body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-		"Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .App-header {
@@ -81,6 +79,10 @@ h5 {
 	justify-content: center;
 }
 
+.hero--text {
+	font-size: 14px;
+}
+
 .hero--img {
 	border-radius: 50%;
 	width: 200px;
@@ -111,13 +113,15 @@ h5 {
 
 .mode--begin {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 5px;
-	margin-top: 20px;
+	gap: 10px;
+	margin-top: 0px;
 }
 
 .mode--beginbtn {
+	border-radius: 4px;
 	background-color: #1e87f0;
 	color: #fff;
 	border: 1px solid transparent;
@@ -127,10 +131,11 @@ h5 {
 }
 
 .mode--leaderboard {
+	border-radius: 4px;
 	background-color: transparent;
-	color: #333;
-	font-weight: 400;
-	border: 1px solid #e5e5e5;
+	color: #1e87f0;
+	font-weight: 600;
+	border: 1px solid #1e87f0;
 	font-size: 20px;
 	padding: 5px 15px;
 }
@@ -148,7 +153,11 @@ h5 {
 
 .rules--title > h1 {
 	font-weight: 400;
-	font-size: 25px;
+	font-size: 18px;
+}
+
+.rules--text {
+	font-size: 14px;
 }
 
 .sidenav {
@@ -182,6 +191,9 @@ h5 {
 	display: flex;
 	justify-content: space-between;
 }
+.leaderboard--table {
+	width: 100%;
+}
 
 .leaderboard--img {
 	background-size: cover;
@@ -191,6 +203,22 @@ h5 {
 	height: 50px;
 	aspect-ratio: 1/1;
 	border-radius: 50%;
+}
+
+.leaderboard--font {
+	font-size: 16px;
+	text-align: left;
+}
+
+.leaderboard--fontscore {
+	font-size: 32px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.leaderboard--title {
+	font-weight: 600;
+	margin-top: 40px;
 }
 
 a {
@@ -224,8 +252,9 @@ a {
 	color: #333;
 	border: 1px solid #e5e5e5;
 	box-sizing: border-box;
-	padding: 5px 30px;
+	padding: 5px 20px;
 	font-size: 16px;
+	font-weight: 400;
 	line-height: 1.5;
 }
 
@@ -234,7 +263,7 @@ a {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-family: Consolas, monaco, monospace;
+	/* font-family: Consolas, monaco, monospace; */
 }
 .quiz--lvlleft,
 .quiz--lvlright {
@@ -258,6 +287,7 @@ a {
 .quiz--heart {
 	vertical-align: middle;
 	color: #f58399 !important;
+	fill: #f58399;
 }
 
 .kanankanan {
@@ -338,6 +368,11 @@ a {
 
 .stats--status {
 	width: 100%;
+}
+
+.stats--status,
+.stats--result {
+	font-size: 14px;
 }
 
 .stats--each {
@@ -421,5 +456,23 @@ a {
 	.quiz--answer1,
 	.quiz--answer2 {
 		flex-wrap: wrap;
+	}
+}
+
+@media only screen and (max-width: 430px) {
+	.leaderboard--font {
+		font-size: 12px;
+	}
+
+	.leaderboard--fontscore {
+		font-size: 24px;
+	}
+
+	.leaderboard--img {
+		width: 30px;
+		height: 30px;
+	}
+	.leaderboard--title {
+		font-size: 28px;
 	}
 }

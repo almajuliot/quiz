@@ -1,22 +1,31 @@
-export default function Leaderboard() {
+export default function Leaderboard(props) {
 	const bg =
 		"https://api-cdn.myanimelist.net/images/userimages/10171065.jpg?t=1677346200";
 	const styles = {
 		backgroundImage: `url(${bg})`,
 	};
 	return (
-		<div className="leaderboard">
-			<h1>Leaderboard</h1>
-			<div className="leaderboard--each">
-				<p>1</p>
+		<tr className="leaderboard">
+			<td>
+				<p className="leaderboard--font">{props.counter}</p>
+			</td>
+			<td>
 				<div style={styles} className="leaderboard--img"></div>
-				<p>
-					<b>AzizKun</b>
+			</td>
+			<td>
+				<p className="leaderboard--font">
+					<b className="leaderboard--font">{props.name}</b>
 				</p>
-				<p>Feb 25, 2023</p>
-				<p>Lvl 7, #847</p>
-				<p>7342</p>
-			</div>
-		</div>
+			</td>
+			<td>
+				<p className="leaderboard--font">Feb 25, 2023</p>
+			</td>
+			<td>
+				<p className="leaderboard--font">Lvl 7, #847</p>
+			</td>
+			<td>
+				<p className="leaderboard--fontscore">7342</p>
+			</td>
+		</tr>
 	);
 }

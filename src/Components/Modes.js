@@ -10,7 +10,6 @@ export default function Modes() {
 	}
 	return (
 		<div className="mode">
-			<p>Singleplayer modes:</p>
 			{/* <div className="mode--list">
 				<EachMode
 					title="Ranked progressive"
@@ -39,7 +38,7 @@ export default function Modes() {
 
 			<div className="mode--begin">
 				<Link to={`/quizes`}>
-					<h1 className="mode--beginbtn">Begin Quiz</h1>
+					<h1 className="mode--beginbtn">Start Quiz</h1>
 				</Link>
 				<Link to={`/leaderboard`}>
 					<h1 className="mode--leaderboard">Leaderboard</h1>

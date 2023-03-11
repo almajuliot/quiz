@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import Home from "./Pages/Home";
 import Quiz from "./Pages/Quiz";
 import Stats from "./Pages/Stats";
+import Leaderboards from "./Pages/Leaderboards";
 
 function App() {
 	return (
@@ -14,7 +15,10 @@ function App() {
 			<HashRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/leaderboard" element={<Leaderboard />} />
+					<Route
+						path="/leaderboard"
+						element={<Leaderboards name="Azizkun" />}
+					/>
 					<Route path="/quizes" element={<Quiz />} />
 					<Route path="/stats" element={<Stats />} />
 				</Routes>

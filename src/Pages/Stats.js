@@ -1,4 +1,4 @@
-import Leaderboard from "../Components/Leaderboard";
+import Leaderboards from "./Leaderboards";
 
 export default function Stats() {
 	return (
@@ -62,7 +62,7 @@ export default function Stats() {
 				bg={"https://chiaki.site/media/c/06/t/52883.jpg"}
 			/>
 
-			<Leaderboard />
+			<Leaderboards />
 		</div>
 	);
 }

@@ -14,7 +14,7 @@ function App() {
 
 	useEffect(() => {
 		async function fethedData() {
-			const res = await fetch("http://5.75.180.91:3000/api/leaderboards");
+			const res = await fetch("https://hypethentic.com/api/product/");
 			const data = await res.json();
 			setLeaderData(data);
 		}

@@ -77,6 +77,7 @@ h5 {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin-top: 58px;
 }
 
 .hero--text {
@@ -88,6 +89,7 @@ h5 {
 	width: 200px;
 	aspect-ratio: 1/1;
 	background-image: url("https://t4.ftcdn.net/jpg/03/32/68/71/360_F_332687153_gmsohq86koOEWFYlYSI3N6xzb1zIcG88.jpg");
+	margin-top: 10px;
 }
 
 .mode--list {
@@ -228,7 +230,7 @@ a {
 }
 
 .quiz--btn {
-	margin-top: 50px;
+	margin-top: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -350,7 +352,7 @@ a {
 .quiz--answer1,
 .quiz--answer2 {
 	display: flex;
-	gap: 15px;
+	gap: 7px;
 }
 
 /* .quiz--answer > * {

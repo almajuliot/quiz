@@ -14,7 +14,7 @@ export default function Rules(props) {
 		<div className="rules">
 			<div onClick={handleClick} className="rules--title">
 				<h1>{props.title}</h1>
-				<h1>+</h1>
+				<h1>{show ? "-" : "+"}</h1>
 			</div>
 			<p className="rules--text" style={styles}>
 				{props.text}

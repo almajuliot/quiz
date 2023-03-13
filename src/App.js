@@ -11,8 +11,8 @@ import Leaderboards from "./Pages/Leaderboards";
 import { useEffect, useState } from "react";
 
 function App() {
-	const [leaderData, setLeaderData] = useState([]);
-	const baseURL = "http://5.75.180.91/api/leaderboards";
+	// const [leaderData, setLeaderData] = useState([]);
+	const baseURL = "http://5.75.180.91:3000/api/leaderboards";
 	const quizData = [
 		{
 			quizQuestions: [
@@ -56,34 +56,34 @@ function App() {
 		},
 	];
 
-	// const leaderData = [
-	// 	{
-	// 		result: [
-	// 			{
-	// 				user_id: 26,
-	// 				user_handle: "HAL9000",
-	// 				user_full_name: "s kk d",
-	// 				user_image_url:
-	// 					"https://img.anslayer.com/anime/user/user-image/20220601165455-1254e22e-1801x1414-original.jpg",
-	// 				level_reached: 2,
-	// 				points_scored: 7,
-	// 				completed_at: "2023-03-14T12:49:30.000Z",
-	// 				times_played: 1,
-	// 			},
-	// 			{
-	// 				user_id: 2,
-	// 				user_handle: "u_somone22",
-	// 				user_full_name: "somone22",
-	// 				user_image_url:
-	// 					"https://img.anslayer.com/anime/user/user-image/20220603050107-17028b72-800x600-original.jpg",
-	// 				level_reached: 1,
-	// 				points_scored: 6,
-	// 				completed_at: "2023-03-14T13:49:30.000Z",
-	// 				times_played: 2,
-	// 			},
-	// 		],
-	// 	},
-	// ];
+	const leaderData = [
+		{
+			result: [
+				{
+					user_id: 26,
+					user_handle: "HAL9000",
+					user_full_name: "s kk d",
+					user_image_url:
+						"https://img.anslayer.com/anime/user/user-image/20220601165455-1254e22e-1801x1414-original.jpg",
+					level_reached: 2,
+					points_scored: 7,
+					completed_at: "2023-03-14T12:49:30.000Z",
+					times_played: 1,
+				},
+				{
+					user_id: 2,
+					user_handle: "u_somone22",
+					user_full_name: "somone22",
+					user_image_url:
+						"https://img.anslayer.com/anime/user/user-image/20220603050107-17028b72-800x600-original.jpg",
+					level_reached: 1,
+					points_scored: 6,
+					completed_at: "2023-03-14T13:49:30.000Z",
+					times_played: 2,
+				},
+			],
+		},
+	];
 
 	// useEffect(() => {
 	// 	axios.get(`${baseURL}/1`).then((response) => {
@@ -91,14 +91,14 @@ function App() {
 	// 	});
 	// }, []);
 
-	useEffect(() => {
-		async function fethedData() {
-			const res = await fetch("//5.75.180.91:3000/api/leaderboards");
-			const data = await res.json();
-			setLeaderData(data);
-		}
-		fethedData();
-	}, []);
+	// useEffect(() => {
+	// 	async function fethedData() {
+	// 		const res = await fetch("http://5.75.180.91:3000/api/leaderboards");
+	// 		const data = await res.json();
+	// 		setLeaderData(data);
+	// 	}
+	// 	fethedData();
+	// }, []);
 
 	return (
 		<div className="App">

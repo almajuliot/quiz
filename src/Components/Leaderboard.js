@@ -1,6 +1,5 @@
 export default function Leaderboard(props) {
-	const bg =
-		"https://api-cdn.myanimelist.net/images/userimages/10171065.jpg?t=1677346200";
+	const bg = props.user_image_url;
 	const styles = {
 		backgroundImage: `url(${bg})`,
 	};
@@ -21,10 +20,12 @@ export default function Leaderboard(props) {
 				<p className="leaderboard--font">Feb 25, 2023</p>
 			</td>
 			<td>
-				<p className="leaderboard--font">Lvl 7, #847</p>
+				<p className="leaderboard--font">
+					Lvl {props.level_reached}, #{props.times_played}
+				</p>
 			</td>
 			<td>
-				<p className="leaderboard--fontscore">7342</p>
+				<p className="leaderboard--fontscore">{props.points_scored}</p>
 			</td>
 		</tr>
 	);

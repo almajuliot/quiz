@@ -11,8 +11,17 @@ import Leaderboards from "./Pages/Leaderboards";
 import { useEffect, useState } from "react";
 
 function App() {
-	// const [leaderData, setLeaderData] = useState([]);
+	const [quizsData, setQuizsData] = useState([]);
+
 	const baseURL = "http://5.75.180.91:3000/api/leaderboards";
+
+	useEffect(() => {
+		axios.get(baseURL).then((response) => {
+			setQuizsData(response.data);
+		});
+	}, []);
+	console.log(quizsData);
+
 	const quizData = [
 		{
 			quizQuestions: [
@@ -84,21 +93,6 @@ function App() {
 			],
 		},
 	];
-
-	// useEffect(() => {
-	// 	axios.get(`${baseURL}/1`).then((response) => {
-	// 		setLeaderData(response.data);
-	// 	});
-	// }, []);
-
-	// useEffect(() => {
-	// 	async function fethedData() {
-	// 		const res = await fetch("http://5.75.180.91:3000/api/leaderboards");
-	// 		const data = await res.json();
-	// 		setLeaderData(data);
-	// 	}
-	// 	fethedData();
-	// }, []);
 
 	return (
 		<div className="App">

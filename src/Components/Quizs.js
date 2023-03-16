@@ -1,18 +1,48 @@
 import { useEffect, useState } from "react";
+import { useNavigate, Route } from "react-router-dom";
+import Leaderboard from "./Leaderboard";
 
 export default function Quizs(props, index) {
 	let trueAnswer,
 		position = "down";
 
-	const [score, setScore] = useState(0);
-	const [level, setLevel] = useState(1);
-	const [live, setLive] = useState(3);
-	const [timer, setTimer] = useState(20);
-	const [addScore, setAddScore] = useState(1);
-	const [fiftys, setFiftys] = useState(false);
+	const navigate = useNavigate();
+
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	//
+	// 	}, 3000);
+	// }, [props.score]);
+
+	useEffect(() => {
+		const TimerInt = setInterval(() => {
+			props.setTimeTake((time) => time + 1);
+		}, 1000);
+		return () => {
+			clearInterval(TimerInt);
+		};
+	}, [props.timeTake]);
+
+	useEffect(() => {
+		if (props.live <= 0) {
+			setTimeout(() => {
+				navigate("/stats", { replace: true });
+			}, 1000);
+			// setTapped(true);
+		}
+	}, [props.live]);
 
 	function timestwo() {
-		setAddScore(2);
+		props.setAddScore(2);
+	}
+
+	function skip() {
+		if (props.score > 0) {
+			const lvlText = document.querySelector(".quiz--lvltext");
+			lvlText.textContent = `-1`;
+			lvlText.classList.add("quiz--green");
+			setTimeout(() => props.setScore((score) => score - 1), 500);
+		}
 	}
 
 	function boostBtn({ target }) {
@@ -24,28 +54,32 @@ export default function Quizs(props, index) {
 	}
 
 	function lvlback() {
-		setLevel((prevLevel) => prevLevel + 1);
+		props.setLevel((prevLevel) => prevLevel + 1);
 
-		setScore((prevScore) => prevScore + addScore);
+		props.setScore((prevScore) => prevScore + props.addScore);
+	}
+
+	function liveminus() {
+		props.setLive((prevLive) => prevLive - 1);
 	}
 
 	useEffect(() => {
 		const lvlText = document.querySelector(".quiz--lvltext");
 		lvlText.classList.remove("quiz--green");
-		lvlText.textContent = `Lvl ${level}, #1`;
-	}, [level]);
+		lvlText.textContent = `Lvl ${props.level}, #1`;
+	}, [props.level]);
 
 	function True(e) {
 		const trueElement = document.querySelector(".guess");
 		const lvlText = document.querySelector(".quiz--lvltext");
 		trueElement.className = "quiz--answerbtn true";
-		lvlText.textContent = `+${addScore}`;
+		lvlText.textContent = `+${props.addScore}`;
 		lvlText.classList.add("quiz--green");
-		setTimeout(lvlback, 1000);
+		setTimeout(lvlback, 500);
 	}
 
 	function False(e) {
-		setLive((prevLive) => prevLive - 1);
+		setTimeout(liveminus, 0);
 		const trueElement = document.querySelector(".truee");
 		const falseElement = document.querySelector(".guess");
 		trueElement.className = "quiz--answerbtn true";
@@ -53,26 +87,26 @@ export default function Quizs(props, index) {
 	}
 
 	function fifty() {
-		setFiftys(true);
+		props.setFiftys(true);
 	}
 
 	useEffect(() => {
-		if (timer === 0) {
+		if (props.timer === 0) {
 			setTimeout(False, 0);
 		}
 
 		const TimerInt =
-			timer > 0 &&
+			props.timer > 0 &&
 			setInterval(() => {
-				setTimer((time) => time - 1);
+				props.setTimer((time) => time - 1);
 			}, 1000);
 		return () => {
 			clearInterval(TimerInt);
 		};
-	}, [timer]);
+	}, [props.timer]);
 
 	for (let i = 0; i < 4; i++) {
-		if (props.quizData[0].quizQuestions[i].answer === "Yes") {
+		if (props.quizData[i].answer === "Yes") {
 			if (i <= 1) {
 				position = "up";
 			} else {
@@ -81,7 +115,7 @@ export default function Quizs(props, index) {
 		}
 	}
 
-	let mappedAnswer = props.quizData[0].quizQuestions.map((each, index) => {
+	let mappedAnswer = props.quizData.map((each, index) => {
 		if (each.answer === "Yes") {
 			trueAnswer = index;
 		}
@@ -90,12 +124,14 @@ export default function Quizs(props, index) {
 			if (each.answer == "Yes") {
 				return (
 					<AnswerBtn
+						tapped={props.tapped}
+						setTapped={props.setTapped}
 						index={index}
 						answer="Yes"
 						position={position}
 						className="true"
 						onClick={True}
-						fiftys={fiftys}
+						fiftys={props.fiftys}
 						character_name={each.character_name}
 						anime_name={each.anime_name}
 					/>
@@ -103,11 +139,13 @@ export default function Quizs(props, index) {
 			} else {
 				return (
 					<AnswerBtn
+						tapped={props.tapped}
+						setTapped={props.setTapped}
 						index={index}
 						position={position}
 						answer="No"
 						onClick={False}
-						fiftys={fiftys}
+						fiftys={props.fiftys}
 						character_name={each.character_name}
 						anime_name={each.anime_name}
 					/>
@@ -116,7 +154,7 @@ export default function Quizs(props, index) {
 		}
 	});
 
-	let mappedAnswer2 = props.quizData[0].quizQuestions.map((each, index) => {
+	let mappedAnswer2 = props.quizData.map((each, index) => {
 		if (each.answer === "Yes") {
 			trueAnswer = index;
 		}
@@ -125,11 +163,13 @@ export default function Quizs(props, index) {
 			if (each.answer == "Yes") {
 				return (
 					<AnswerBtn
+						tapped={props.tapped}
+						setTapped={props.setTapped}
 						index={index}
 						answer="Yes"
 						position={position}
 						className="true"
-						fiftys={fiftys}
+						fiftys={props.fiftys}
 						onClick={True}
 						character_name={each.character_name}
 						anime_name={each.anime_name}
@@ -138,11 +178,13 @@ export default function Quizs(props, index) {
 			} else {
 				return (
 					<AnswerBtn
+						tapped={props.tapped}
+						setTapped={props.setTapped}
 						index={index}
 						answer="No"
 						position={position}
 						onClick={False}
-						fiftys={fiftys}
+						fiftys={props.fiftys}
 						character_name={each.character_name}
 						anime_name={each.anime_name}
 					/>
@@ -162,7 +204,7 @@ export default function Quizs(props, index) {
 					<h4 className="guesss" onClick={boostBtn}>
 						x2
 					</h4>
-					<h4 className="guesss">
+					<h4 onClick={skip} className="guesss">
 						<svg
 							className="kanankanan"
 							width="20"
@@ -191,16 +233,18 @@ export default function Quizs(props, index) {
 
 			<div className="quiz--lvl">
 				<div className="quiz--lvlleft">
-					<h1 className="quiz--point">{score}</h1>
-					<h4 className="quiz--lvltext">Lvl {level}, #1</h4>
+					<h1 className="quiz--point">{props.score}</h1>
+					<h4 className="quiz--lvltext">Lvl {props.level}, #1</h4>
 				</div>
 				<div className="quiz--lvlright">
 					<div>
-						{(live > 2 && <Heart />) || <Heart class="heart--zero" />}
-						{(live > 1 && <Heart />) || <Heart class="heart--zero" />}
-						{(live > 0 && <Heart />) || <Heart class="heart--zero" />}
+						{(props.live > 2 && <Heart />) ||
+							(props.live > 1 && <Heart class="heart--zero" />)}
+						{(props.live > 1 && <Heart />) ||
+							(props.live > 0 && <Heart class="heart--zero" />)}
+						{(props.live > 0 && <Heart />) || <Heart class="heart--zero" />}
 					</div>
-					<h1 className="quiz--second">{timer}</h1>
+					<h1 className="quiz--second">{props.timer}</h1>
 				</div>
 			</div>
 
@@ -254,6 +298,7 @@ function AnswerBtn(props) {
 	}
 
 	function Guess(e) {
+		props.setTapped(true);
 		let target = e.target;
 		if (
 			target.className === "quiz--answerbtn falsee" ||
@@ -266,9 +311,12 @@ function AnswerBtn(props) {
 			setTimeout(props.onClick, 1000);
 		}
 	}
+
+	function nothing() {}
+
 	return (
 		<div
-			onClick={Guess}
+			onClick={!props.tapped ? Guess : nothing}
 			className={isTrue ? "quiz--answerbtn truee" : "quiz--answerbtn falsee"}
 		>
 			<p

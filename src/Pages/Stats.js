@@ -1,12 +1,12 @@
+import { useParams } from "react-router-dom";
 import Leaderboards from "./Leaderboards";
-
-export default function Stats() {
+export default function Stats(props) {
 	return (
 		<div className="stats">
-			<h1 className="stats--score">Final Score : 1</h1>
+			<h1 className="stats--score">Final Score : {props.score}</h1>
 			<Each left="Quiz Mode" right="Ranked" />
 			<Each left="Question number reached" right="1" />
-			<Each left="Level reached" right="1" />
+			<Each left="Level reached" right={props.level} />
 
 			<Title text={"Lifeline uses"} />
 			<Each
@@ -44,7 +44,12 @@ export default function Stats() {
 			/>
 
 			<Title text={"Time stats"} />
-			<Each left="Overall time taken" right="00:00:11" />
+			<Each
+				left="Overall time taken"
+				right={`${props.hours > 10 ? props.hours : `0${props.hours}`}:${
+					props.minutes > 10 ? props.minutes : `0${props.minutes}`
+				}:${props.seconds > 10 ? props.seconds : `0${props.seconds}`}`}
+			/>
 			<Each left="Time taken (excluding all pauses)" right="00:00:06" />
 			<Each left="Average time per question" right="00:01.5" />
 
@@ -62,7 +67,7 @@ export default function Stats() {
 				bg={"https://chiaki.site/media/c/06/t/52883.jpg"}
 			/>
 
-			<Leaderboards />
+			<Leaderboards leaderData={props.leaderData} />
 		</div>
 	);
 }

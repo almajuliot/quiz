@@ -1,7 +1,6 @@
 import Leaderboard from "../Components/Leaderboard";
-import dummy from "../dummy";
 export default function Leaderboards(props) {
-	const mappedLeaderboard = props.leaderData[0].result.map((each, index) => {
+	const mappedLeaderboard = props.leaderData.map((each, index) => {
 		return (
 			<Leaderboard
 				key={each.user_id}

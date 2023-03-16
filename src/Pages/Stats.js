@@ -13,7 +13,7 @@ export default function Stats(props) {
 				left={[`50:50 (`, <sup>50</sup>, `/`, <sub>50</sub>, `)`]}
 				right="1"
 			/>
-			<Each left="Double Dip (×2)" right="1" />
+			<Each left="Double Dip (×2)" right={props.timesTwo} />
 			<Each
 				left={[
 					`Question Skip (`,
@@ -40,7 +40,7 @@ export default function Stats(props) {
 					</svg>,
 					`)`,
 				]}
-				right="1"
+				right={props.skip}
 			/>
 
 			<Title text={"Time stats"} />

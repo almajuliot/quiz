@@ -8,12 +8,6 @@ export default function Quizs(props, index) {
 
 	const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	//
-	// 	}, 3000);
-	// }, [props.score]);
-
 	useEffect(() => {
 		const TimerInt = setInterval(() => {
 			props.setTimeTake((time) => time + 1);
@@ -37,24 +31,30 @@ export default function Quizs(props, index) {
 	}
 
 	function skip() {
+		const lvlText = document.querySelector(".quiz--lvltext");
 		if (props.score > 0) {
-			const lvlText = document.querySelector(".quiz--lvltext");
 			lvlText.textContent = `-1`;
-			lvlText.classList.add("quiz--green");
+			lvlText.classList.add("quiz--red");
 			setTimeout(() => props.setScore((score) => score - 1), 500);
+		}
+
+		if (!lvlText.classList.contains("quiz--red") && props.score > 0) {
+			props.setSkip((prev) => prev + 1);
+			console.log("skiped");
 		}
 	}
 
 	function boostBtn({ target }) {
+		timestwo();
 		if (target.className === "guesss") {
 			target.classList.add("guessboost");
 			target.classList.remove("guesss");
+			props.setTimesTwo((prev) => prev + 1);
 		}
-		timestwo();
 	}
 
 	function lvlback() {
-		props.setLevel((prevLevel) => prevLevel + 1);
+		props.setQuestion((prevLevel) => prevLevel + 1);
 
 		props.setScore((prevScore) => prevScore + props.addScore);
 	}
@@ -66,7 +66,7 @@ export default function Quizs(props, index) {
 	useEffect(() => {
 		const lvlText = document.querySelector(".quiz--lvltext");
 		lvlText.classList.remove("quiz--green");
-		lvlText.textContent = `Lvl ${props.level}, #1`;
+		lvlText.textContent = `Lvl ${props.level}, #${props.question}`;
 	}, [props.level]);
 
 	function True(e) {
@@ -88,6 +88,9 @@ export default function Quizs(props, index) {
 
 	function fifty() {
 		props.setFiftys(true);
+		if (!props.fiftys) {
+			props.setHalf((prev) => prev + 1);
+		}
 	}
 
 	useEffect(() => {
@@ -234,7 +237,7 @@ export default function Quizs(props, index) {
 			<div className="quiz--lvl">
 				<div className="quiz--lvlleft">
 					<h1 className="quiz--point">{props.score}</h1>
-					<h4 className="quiz--lvltext">Lvl {props.level}, #1</h4>
+					<h4 className="quiz--lvltext">Lvl {props.level}</h4>
 				</div>
 				<div className="quiz--lvlright">
 					<div>

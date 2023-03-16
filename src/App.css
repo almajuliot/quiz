@@ -282,6 +282,11 @@ a {
 	font-weight: 700;
 	font-size: 35px !important;
 }
+.quiz--red {
+	color: #f0506e;
+	font-weight: 700;
+	font-size: 35px !important;
+}
 
 .quiz--lvlright {
 	gap: 7px;

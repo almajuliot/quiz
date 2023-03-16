@@ -14,6 +14,7 @@ function App() {
 	const [leaderData, setLeaderData] = useState([]);
 	const [quizData, setQuizData] = useState([]);
 	const [level, setLevel] = useState(1);
+	const [question, setQuestion] = useState(1);
 	const [score, setScore] = useState(0);
 	const [live, setLive] = useState(3);
 	const [timeTake, setTimeTake] = useState(0);
@@ -21,6 +22,9 @@ function App() {
 	const [addScore, setAddScore] = useState(1);
 	const [fiftys, setFiftys] = useState(false);
 	const [tapped, setTapped] = useState(false);
+	const [timesTwo, setTimesTwo] = useState(0);
+	const [half, setHalf] = useState(0);
+	const [skip, setSkip] = useState(0);
 
 	let arrayQuizData, arrayLeaderData;
 
@@ -56,13 +60,15 @@ function App() {
 			setFiftys(false);
 			setTapped(false);
 		}, 1800);
-	}, [level, live]);
+
+		if (question % 6 === 0) {
+			setLevel((prev) => prev + 1);
+		}
+	}, [live, score, question]);
 
 	const [seconds, setSeconds] = useState();
 	const [minutes, setMinutes] = useState();
 	const [hours, setHours] = useState();
-
-	function calculateTime(second) {}
 
 	useEffect(() => {
 		const totalMinutes = Math.floor(timeTake / 60);
@@ -104,6 +110,14 @@ function App() {
 								setFiftys={setFiftys}
 								tapped={tapped}
 								setTapped={setTapped}
+								timesTwo={timesTwo}
+								setTimesTwo={setTimesTwo}
+								half={half}
+								setHalf={setHalf}
+								skip={skip}
+								setSkip={setSkip}
+								question={question}
+								setQuestion={setQuestion}
 							/>
 						}
 					/>
@@ -117,6 +131,8 @@ function App() {
 								seconds={seconds}
 								minutes={minutes}
 								hours={hours}
+								timesTwo={timesTwo}
+								skip={skip}
 							/>
 						}
 					/>

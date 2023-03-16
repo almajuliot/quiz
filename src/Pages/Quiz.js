@@ -26,6 +26,14 @@ export default function Quiz(props) {
 					setFiftys={props.setFiftys}
 					tapped={props.tapped}
 					setTapped={props.setTapped}
+					timesTwo={props.timesTwo}
+					setTimesTwo={props.setTimesTwo}
+					half={props.half}
+					setHalf={props.setHalf}
+					skip={props.skip}
+					setSkip={props.setSkip}
+					question={props.question}
+					setQuestion={props.setQuestion}
 				/>
 			);
 		}

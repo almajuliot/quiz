@@ -22,24 +22,24 @@ function App() {
 	const [fiftys, setFiftys] = useState(false);
 	const [tapped, setTapped] = useState(false);
 
-	let arrayQuizData = Array.from(quizData),
-		arrayLeaderData;
+	let arrayQuizData, arrayLeaderData;
 
 	function changeData() {
-		async function fethedData() {
-			const res = await fetch(
-				`http://5.75.180.91:3000/api/quiz-questions?lv=${level}`
-			);
-			const data = await res.json();
-			setQuizData(data.quizQuestions);
-		}
-		fethedData();
+		const url2 = new URL(
+			`https://ani-space.com/quiz/api/quiz-questions?lv=${level}`
+		);
+		const options2 = {
+			base: "https://ani-space.com/quiz/api/",
+			redirect: "manual",
+		};
 
-		arrayQuizData = Array.from(quizData);
+		fetch(url2, options2)
+			.then((response) => response.json())
+			.then((json) => setQuizData(json.quizQuestions));
 
-		const url = new URL("http://5.75.180.91:3000/api/leaderboards");
+		const url = new URL("https://ani-space.com/quiz/api/leaderboards");
 		const options = {
-			base: "http://5.75.180.91:3000/",
+			base: "https://ani-space.com/quiz/api/",
 			redirect: "manual",
 		};
 
@@ -55,7 +55,7 @@ function App() {
 			setAddScore(1);
 			setFiftys(false);
 			setTapped(false);
-		}, 1700);
+		}, 1800);
 	}, [level, live]);
 
 	const [seconds, setSeconds] = useState();
@@ -71,6 +71,7 @@ function App() {
 		setMinutes(totalMinutes % 60);
 	}, [timeTake]);
 
+	arrayQuizData = Array.from(quizData);
 	arrayLeaderData = Array.from(leaderData);
 	return (
 		<div className="App">
